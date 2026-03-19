@@ -10,7 +10,9 @@ const NAV_ITEMS = [
   { label: "Home", href: "#home" },
   { label: "Biography", href: "#biography" },
   { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
 ];
 
 const Sidebar = () => {
@@ -54,6 +56,7 @@ const Sidebar = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={() => setActiveHash(item.href)}
               className={`text-sm tracking-widest uppercase font-semibold transition-colors duration-300 ${
                 activeHash === item.href ? "text-[#ff0055]" : "text-zinc-500 hover:text-white"
               }`}

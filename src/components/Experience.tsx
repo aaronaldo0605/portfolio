@@ -9,51 +9,50 @@ const experiences = [
     company: "BMO Bank N.A.",
     location: "Jacksonville, Florida",
     date: "May 2025 - Present",
-    color: "#0079C1", // BMO Blue
-    logoText: "B",
+    logoSrc: "/logos/bmo.png",
     points: [
       "Gathered stakeholder requirements and designed 12 SharePoint sites to centralize resources, improving training efficiency by 40%.",
-      "Analyzed manual workflows and automated 5+ processes using Power Apps and Power Automate, saving 25+ hours monthly.",
-      "Developed an interactive Power BI dashboard to track team training metrics, enabling real-time performance evaluation."
+      "Analyzed manual workflows and automated 5+ processes using Power Apps and Power Automate, saving 25+ hours per month.",
+      "Translated business needs into Power BI dashboards using advanced DAX to track KPIs across 5+ teams, improving visibility by 35%.",
+      "Queried and consolidated 800+ operational records using SQL into a centralized SharePoint repository, reducing lookup time by 30%."
     ]
   },
   {
     role: "Data Analyst",
     company: "Travelex",
     location: "Mumbai, India",
-    date: "Sep 2022 - Jun 2024",
-    color: "#E31837", // Travelex Red
-    logoText: "T",
+    date: "May 2022 - Aug 2024",
+    logoSrc: "/logos/travelex.png",
     points: [
-      "Developed 8+ interactive Power BI dashboards for senior management, enhancing financial reporting speed and accuracy.",
-      "Rebuilt core data ingestion pipelines via Azure Synapse and Snowflake, cutting daily refresh times by 30%.",
-      "Designed advanced SQL server queries over millions of rows, uncovering customer segments that increased targeted revenue by 10%."
+      "Created 55+ BI reports with Power BI, SQL, and Excel to support business performance monitoring and stakeholder decision-making.",
+      "Redesigned and automated an ETL pipeline, reducing runtime from 75 hours to 70 seconds and improving efficiency by 3800x.",
+      "Automated data validation pipelines for BI reports using SQL and Python, improving reporting accuracy and reducing manual effort.",
+      "Built Risk Case Manager (RCM) reporting dashboards for stakeholder case analytics, eliminating $150,000+ in licensing costs.",
+      "Optimized Amazon S3 storage architecture, reducing cloud infrastructure costs by $60,000+.",
+      "Validated AML compliance data across 17 countries using NICE Actimize, Persona, and ThetaRay to ensure reporting accuracy.",
+      "Analyzed and optimized fraud detection and AML monitoring rules to reduce alert volume by 50% and false positives by 60%."
     ]
   },
   {
     role: "Business Analyst Intern",
     company: "3folks Media",
     location: "Mumbai, India",
-    date: "Jan 2022 - Aug 2022",
-    color: "#6B21A8", // Deep Purple
-    logoText: "3",
+    date: "Aug 2020 - May 2022",
+    logoSrc: "/logos/3folks.png",
     points: [
-      "Analyzed web analytics through Google Analytics to re-architect client SEO, boosting organic web traffic by 30%.",
-      "Mapped and optimized CRM workflows using Agile methodologies, resulting in a 15% increase in lead retention.",
-      "Presented bi-weekly trend reports to cross-functional teams, directly shaping product marketing strategies."
+      "Evaluated campaign KPIs for 120+ interns using SQL to identify performance gaps, improving operational efficiency by 60%.",
+      "Tracked delivery metrics using Jira and implemented agile practices, reducing delivery time by 35% and improving productivity by 50%."
     ]
   },
   {
     role: "Software Developer Intern",
     company: "KubixSquare",
     location: "Mumbai, India",
-    date: "May 2021 - Oct 2021",
-    color: "#059669", // Emerald Green
-    logoText: "K",
+    date: "Aug 2021 - Nov 2021",
+    logoSrc: "/logos/kubixsquare.png",
     points: [
-      "Programmed cutting-edge frontend UI elements in React.js, optimizing component re-rendering and page load speed by 25%.",
-      "Integrated dynamic REST APIs into financial portals, ensuring secure and high-throughput transaction metrics.",
-      "Collaborated closely with UX designers to align technical implementation with strict conversion-oriented design principles."
+      "Developed 3 application modules for KubixSquare Application Architecture using Python, MySQL, Django, and Docker.",
+      "Improved database queries, reducing load time by 12% and improving user responsiveness."
     ]
   }
 ];
@@ -77,11 +76,8 @@ const ExperienceItem = ({ exp, index, isLast }: { exp: any; index: number; isLas
       className="flex items-start gap-8 lg:gap-14 relative"
     >
       {/* Logo Box */}
-      <div 
-        className="hidden md:flex w-32 h-32 lg:w-40 lg:h-40 shrink-0 items-center justify-center shadow-2xl mt-4 bg-[#121212] border border-zinc-900"
-        style={{ backgroundColor: exp.color }}
-      >
-        <span className="text-white text-5xl lg:text-7xl font-bold">{exp.logoText}</span>
+      <div className="hidden md:flex w-32 h-32 lg:w-40 lg:h-40 shrink-0 items-center justify-center mt-4 rounded-2xl overflow-hidden bg-[#121212] border border-zinc-800 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] shadow-2xl relative">
+        <img src={exp.logoSrc} alt={`${exp.company} logo`} className="w-full h-full object-cover" />
       </div>
 
       {/* Timeline Column */}

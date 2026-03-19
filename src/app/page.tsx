@@ -3,7 +3,10 @@ import Overlay from "@/components/Overlay";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Biography from "@/components/Biography";
+import Skills from "@/components/Skills";
 import Sidebar from "@/components/Sidebar";
+import Education from "@/components/Education";
+import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   return (
@@ -18,7 +21,10 @@ export default function Home() {
         </div>
         <Biography />
         <Experience />
+        <Skills />
         <Projects />
+        <Education />
+        <Chatbot />
       </div>
     </main>
   );

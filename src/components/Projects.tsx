@@ -6,27 +6,46 @@ import { ArrowUpRight } from "lucide-react";
 const PROJECTS = [
   {
     id: 1,
-    title: "Glaucoma Detection",
-    category: "Deep Learning",
-    description: "Evaluated CNN & CNN-LSTM architectures for healthcare healthcare funds image dataset. Achieved 94.52% accuracy using VGG19+LSTM model.",
+    title: "Deep Learning Glaucoma Detection",
+    points: [
+      "Evaluated CNN and CNN-LSTM architectures for glaucoma classification on the ACRIMA healthcare fundus image dataset.",
+      "Achieved 94.52% accuracy using the optimized VGG19+LSTM model with augmentation and cross-validation."
+    ],
+    url: "https://link.springer.com/chapter/10.1007/978-981-99-9521-9_14"
   },
   {
     id: 2,
-    title: "ML-Based Analytics",
-    category: "Predictive Analytics",
-    description: "Performed EDA and feature engineering on 10K+ records, improving model accuracy by 12% for business decision-making.",
+    title: "ML-Based Business Analytics (The Sparks Foundation)",
+    points: [
+      "Performed EDA and feature engineering on 10K+ records, improving predictive model accuracy by 12% for business decision-making.",
+      "Created correlation heatmaps and feature importance visualizations using Matplotlib and Seaborn for model evaluation."
+    ]
   },
   {
     id: 3,
-    title: "ERP Management System",
-    category: "Software Dev",
-    description: "Engineered a Python-MySQL college ERP system managing 800+ records. Recognized as Best Project.",
+    title: "Enterprise Resource Planning (ERP) Management System",
+    points: [
+      "Engineered a Python-MySQL college ERP system with CRUD functionality, managing 800+ academic and administrative records.",
+      "Implemented student management and attendance modules, recognized as Best Project of Sophomore Year for scalable design."
+    ]
   },
   {
     id: 4,
-    title: "Natural Disaster Prediction",
-    category: "Cloud ML",
-    description: "Cloud-based model using Random Forest Regression to forecast disasters with historical environmental data, increasing accuracy by 20%.",
+    title: "Cloud-Based Natural Disaster Prediction",
+    points: [
+      "Developed a cloud-based prediction model to forecast natural disasters using historical environmental and weather data.",
+      "Increased prediction accuracy by 20% with Random Forest Regression to support early warning and disaster risk forecasting."
+    ],
+    url: "https://www.irjet.net/archives/V8/i11/IRJET-V8I1178.pdf"
+  },
+  {
+    id: 5,
+    title: "Food Sales Forecasting",
+    points: [
+      "Authored a comprehensive survey publication on utilizing machine learning techniques for optimal forecasting.",
+      "Identified advanced methods for achieving significant cost reduction and precision in food sales."
+    ],
+    url: "https://doi.org/10.22214/ijraset.2021.38069"
   },
 ];
 
@@ -42,30 +61,37 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, i) => (
-            <motion.div
+            <motion.a
+              href={project.url || "#"}
+              target={project.url ? "_blank" : undefined}
+              rel={project.url ? "noopener noreferrer" : undefined}
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group relative flex flex-col justify-end min-h-[400px] p-8 rounded-2xl border border-zinc-800 bg-zinc-900/40 backdrop-blur-md overflow-hidden hover:border-zinc-700 transition-colors duration-500"
+              className="group relative flex flex-col justify-start min-h-[400px] p-8 rounded-2xl border border-zinc-900 bg-[#121212] backdrop-blur-md overflow-hidden hover:border-[#FE4A49]/50 transition-colors duration-500 shadow-2xl"
             >
               {/* Subtle hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl bg-gradient-to-br from-[#FE4A49]/5 to-transparent pointer-events-none" />
               
               <div className="relative z-10 flex flex-col gap-2">
-                <p className="text-sm font-semibold tracking-wider text-zinc-400 uppercase">
-                  {project.category}
-                </p>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                  <div className="p-2 rounded-full bg-white/10 group-hover:bg-white group-hover:text-black transition-colors duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-2xl font-bold text-[#FE4A49] group-hover:text-white transition-colors duration-300">{project.title}</h3>
+                  <div className="p-2 rounded-full bg-white/10 group-hover:bg-[#FE4A49] group-hover:text-white transition-colors duration-300">
                     <ArrowUpRight size={20} />
                   </div>
                 </div>
-                <p className="text-zinc-500">{project.description}</p>
+                <ul className="text-zinc-400 space-y-3 leading-relaxed list-inside">
+                  {project.points.map((point, ptIndex) => (
+                    <li key={ptIndex} className="flex items-start gap-3 text-base">
+                      <span className="mt-1.5 text-[#FE4A49] text-xs">●</span>
+                      <span className="text-zinc-300 text-sm leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
